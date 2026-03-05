@@ -1,0 +1,22 @@
+meta {
+  name: Basic call
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{BASE_URL}}/feed?start_date=2015-09-07&end_date=2015-09-08&api_key={{API_KEY}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  start_date: 2015-09-07
+  end_date: 2015-09-08
+  api_key: {{API_KEY}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
