@@ -1,8 +1,8 @@
-import { DateTime } from "luxon";
 import { Loader2 } from "lucide-react";
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
+import { DateTime } from "luxon";
 import { useNavigation } from "react-router";
-import type { TAsteroidsPerDay, TDateRange } from "types/neo-data-process.type";
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
+import type { TAsteroidsPerDay } from "types/neo-data-process.type";
 import {
   Card,
   CardContent,
@@ -16,7 +16,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "~/components/ui/chart";
-import { DateRangeFilter } from "./DateRangeFilter";
 
 const chartConfig = {
   asteroidsPerDay: {
@@ -27,30 +26,19 @@ const chartConfig = {
 
 export function AsteroidsPerDay({
   asteroidsPerDay,
-  dateRange,
 }: {
   asteroidsPerDay: TAsteroidsPerDay;
-  dateRange: TDateRange;
 }) {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
 
   return (
-    <Card className="pt-0">
-      <CardHeader className="flex flex-col gap-4 space-y-0 border-b py-5">
-        <div className="flex items-center justify-between gap-2">
-          <div className="grid flex-1 gap-1">
-            <CardTitle>Asteroids Per Day</CardTitle>
-            <CardDescription>
-              Showing total asteroids per day from {dateRange.start} to{" "}
-              {dateRange.end}
-            </CardDescription>
-          </div>
-        </div>
-        <DateRangeFilter
-          currentStartDate={dateRange.start}
-          currentEndDate={dateRange.end}
-        />
+    <Card>
+      <CardHeader>
+        <CardTitle>Asteroids Per Day</CardTitle>
+        <CardDescription>
+          Daily count of Near-Earth Objects detected
+        </CardDescription>
       </CardHeader>
       <CardContent className="relative px-2 pt-4 sm:px-6 sm:pt-6">
         {isLoading && (

@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 import type { TNeoGeneralMeasures } from "types/neo-data-process.type";
+import { getMeasurementsScatter } from "./utils/getMeasurementsScatter";
 import { MAX_TOTAL_DAYS } from "./constants";
 import { fetchNeoData } from "./utils/fetchNeoData";
 import { getAsteroidsPerDay } from "./utils/getAsteroidsPerDay";
@@ -43,5 +44,6 @@ export async function getNeoGeneralMeasures(
       end: endDate,
       totalDays: Math.ceil(totalDays),
     },
+    measurementsScatter: getMeasurementsScatter(mergedData),
   };
 }
