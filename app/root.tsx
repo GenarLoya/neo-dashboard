@@ -11,15 +11,34 @@ import type { Route } from "./+types/root";
 import "./app.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const themeScript = `
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = savedTheme || (prefersDark ? "dark" : "light");
+
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    })();
+  `;
+
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/** biome-ignore lint/security/noDangerouslySetInnerHtml: need theme script */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+
         <Meta />
         <Links />
       </head>
-      <body>
+
+      <body className="bg-background h-screen w-screen">
         {children}
         <ScrollRestoration />
         <Scripts />

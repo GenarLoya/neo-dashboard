@@ -1,9 +1,9 @@
 import { DateTime } from "luxon";
 import type { TNeoGeneralMeasures } from "types/neo-data-process.type";
-import { getMeasurementsScatter } from "./utils/getMeasurementsScatter";
 import { MAX_TOTAL_DAYS } from "./constants";
 import { fetchNeoData } from "./utils/fetchNeoData";
 import { getAsteroidsPerDay } from "./utils/getAsteroidsPerDay";
+import { getMeasurementsScatter } from "./utils/getMeasurementsScatter";
 import { mergeNeoResponses } from "./utils/mergeNeoResponses";
 import { splitDateRange } from "./utils/splitDateRange";
 
