@@ -61,7 +61,7 @@ export function DateRangeFilter({
       const start = DateTime.fromJSDate(dateRange.from).toFormat("yyyy-MM-dd");
       const end = DateTime.fromJSDate(dateRange.to).toFormat("yyyy-MM-dd");
 
-      navigate(`/?startDate=${start}&endDate=${end}`);
+      navigate(`/graphs?startDate=${start}&endDate=${end}`);
     }
   };
 
@@ -74,7 +74,7 @@ export function DateRangeFilter({
       to: defaultEnd,
     });
 
-    navigate("/");
+    navigate("/graphs");
   };
 
   const formatDateRange = (range: DateRange | undefined) => {

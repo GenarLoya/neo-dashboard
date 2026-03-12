@@ -4,7 +4,7 @@ import { Nav } from "./components/Nav";
 
 export default function RootLayout() {
   return (
-    <StarfieldBackground>
+    <StarfieldBackground speed={0.1}>
       <div className="z-9 h-screen w-screen overflow-y-auto">
         <Nav></Nav>
         <main className="px-4 py-2">
